@@ -68,7 +68,7 @@ def get_device_secret(SSO):
     jsondata = response.json()
     Dsecret = jsondata["deviceSecret"]
     print(f'Your Device Secret:{Dsecret}')
-    original_bytes = Dsecret.encode('utf-8')
+    original_bytes = bytes.fromhex(Dsecret)
     # 使用 base32 进行编码
     encoded_bytes = base64.b32encode(original_bytes)
     encoded_string = encoded_bytes.decode('utf-8')
